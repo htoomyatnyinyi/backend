@@ -18,14 +18,21 @@ const app = express();
 //   })
 // );
 
+// Allow all origins for CORS
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Set in .env
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    origin: "*", // Allows all origins
+    credentials: true, // Still allows cookies
   })
 );
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL || "http://localhost:5173", // Set in .env
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type"],
+//   })
+// );
 
 app.use(express.json());
 app.use(cookieParser());
